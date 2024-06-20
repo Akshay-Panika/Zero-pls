@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../widget_folder/color_widget.dart';
 import '../widget_folder/textstyle_widget.dart';
-import '../widget_folder/whatsapp_button.dart';
 
 class AppbarContainer extends StatefulWidget {
   final GlobalKey homeKey;
@@ -51,6 +51,14 @@ class _AppbarContainerState extends State<AppbarContainer> {
     }
   }
 
+  ///___ WhatsAppChat
+  final Uri _whatsappChat = Uri.parse('https://wa.me/+918989207770');
+  Future<void> whatsappChat() async {
+    if (!await launchUrl(_whatsappChat)) {
+      throw Exception('Could not launch $_whatsappChat');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -61,7 +69,7 @@ class _AppbarContainerState extends State<AppbarContainer> {
       margin: EdgeInsets.only(
         left: screenWidth > 500 ? screenWidth*0.03 : screenWidth*0.04,
         right: screenWidth > 500 ? screenWidth*0.03 : screenWidth*0.04,
-        top: 30,
+        top: 20,
       ),      decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: ColorWidget.deepOrange100,
@@ -78,7 +86,7 @@ class _AppbarContainerState extends State<AppbarContainer> {
 
             screenWidth > 500 ?  Row(children: navList,) : Container(),
 
-            screenWidth > 500 ? WhatsappButton() :
+            screenWidth > 500 ? IconButton(onPressed: () => whatsappChat(), icon: const Icon(Icons.chat)) :
             InkWell(child: Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(isOpen ?"Project": "Home",style: textStyle(fontSize: 13,fontWeight: FontWeight.w500),),

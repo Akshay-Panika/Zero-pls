@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:zero_pls/widget_folder/height_width_widget.dart';
 import '../contents/about_container.dart';
 import '../contents/appbar_container.dart';
@@ -8,11 +8,9 @@ import '../contents/my_project.dart';
 import '../contents/my_skills.dart';
 import '../contents/profile_container.dart';
 import '../widget_folder/color_widget.dart';
-import '../widget_folder/whatsapp_button.dart';
-
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -21,15 +19,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey homeKey = GlobalKey();
   final GlobalKey skillsKey = GlobalKey();
-
-
   bool openProject = false;
+
   void toggleProject({required bool open}) {
     setState(() {
       openProject = open;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -39,59 +35,68 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: ColorWidget.deepOrange50,
       body: Column(
         children: [
-
-          ///___ App bar
+          /// App bar
           AppbarContainer(
             homeKey: homeKey,
             skillsKey: skillsKey,
-            toggleProject:  toggleProject,
+            toggleProject: toggleProject,
           ),
 
-
-
-          // Content based on openProjectScreen
-          openProject ?
-          const MyProject() :
-          Expanded(
+          /// Content based on openProjectScreen
+          openProject
+              ? const MyProject()
+              : Expanded(
             child: ListView(
               children: [
-                ///___ Home Container
+                /// Home Container
                 Padding(
                   key: homeKey,
-                  padding: const EdgeInsets.only(top: 40.0),
+                  padding: const EdgeInsets.only(top: 30.0),
                   child: const Wrap(
                     spacing: 30,
                     runSpacing: 40,
                     alignment: WrapAlignment.center,
-                    runAlignment: WrapAlignment.center,
-                    crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      ///___ Profile Container
+                      /// Profile Container
                       ProfileContainer(),
 
-                      ///___ About Container
+                      /// About Container
                       AboutContainer(),
                     ],
                   ),
                 ),
 
-                ///___ My Project
+                /// My Skills
                 150.height,
-                MySkills(key: skillsKey,),
+                MySkills(key: skillsKey),
                 50.height,
 
-                const MyFooter()
+                /// Footer
+                const MyFooter(),
               ],
             ),
-          )
-
+          ),
         ],
       ),
 
-      floatingActionButton: screenWidth > 500 ? Container()
-      :FloatingActionButton.small(
+      /// Floating Action Button
+      floatingActionButton: screenWidth > 500
+          ? Container()
+          : FloatingActionButton.small(
         backgroundColor: ColorWidget.deepOrange100,
-          onPressed: () {},child: const WhatsappButton(),),
+        onPressed: _launchWhatsApp,
+        child: const Icon(Icons.chat),
+      ),
     );
+  }
+
+  /// WhatsApp Chat
+  final Uri _whatsappChat = Uri.parse('https://wa.me/+918989207770');
+  Future<void> _launchWhatsApp() async {
+    if (!await launchUrl(_whatsappChat)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not launch $_whatsappChat')),
+      );
+    }
   }
 }

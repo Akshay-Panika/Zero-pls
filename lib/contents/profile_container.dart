@@ -1,4 +1,6 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:zero_pls/widget_folder/color_widget.dart';
 import '../../../widget_folder/container_widget.dart';
 import '../widget_folder/textstyle_widget.dart';
 
@@ -25,26 +27,26 @@ class ProfileContainer extends StatelessWidget {
             child: Column(
               children: [
                 Text("Akshay Panika",style: textStyle18(fontWeight: FontWeight.w600)),
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  children: [
-                    Text("Flutter / ",style: textStyle14(fontWeight: FontWeight.w500)),
-                    Text("Wordpress Developer & ",style: textStyle14(fontWeight: FontWeight.w500)),
-                    Text("Graphic Designer",style: textStyle14(fontWeight: FontWeight.w500)),
-                  ],
-                ),
+                // Wrap(
+                //   alignment: WrapAlignment.center,
+                //   children: [
+                //     Text("Flutter / ",style: textStyle14(fontWeight: FontWeight.w500)),
+                //     Text("Wordpress Developer & ",style: textStyle14(fontWeight: FontWeight.w500)),
+                //     Text("Graphic Designer",style: textStyle14(fontWeight: FontWeight.w500)),
+                //   ],
+                // ),
 
                 // SizedBox(height:30,
                 //   child: AnimatedTextKit(
                 //     repeatForever: true,
                 //     animatedTexts: [
-                //       RotateAnimatedText('Flutter Developer',textStyle:const TextStyle(fontSize:25,fontWeight: FontWeight.w600,color: Colors.black) ),
-                //       RotateAnimatedText('Wordpress Developer',textStyle:const TextStyle(fontSize:25,fontWeight: FontWeight.w600,color: Colors.black) ),
-                //       RotateAnimatedText('Graphic Designer',textStyle:const TextStyle(fontSize:25,fontWeight: FontWeight.w600,color: Colors.black) ),
+                //       RotateAnimatedText('Flutter Developer',textStyle: textStyle(fontSize:25,fontWeight: FontWeight.w600,color: ColorWidget.colorBlack) ),
+                //       RotateAnimatedText('Wordpress Developer',textStyle: textStyle(fontSize:25,fontWeight: FontWeight.w600,color: ColorWidget.colorBlack) ),
+                //       RotateAnimatedText('Graphic Designer',textStyle: textStyle(fontSize:25,fontWeight: FontWeight.w600,color: ColorWidget.colorBlack)),
                 //     ],
                 //   ),
                 // ),
-                // Text("Flutter Developer",style: TextStyle(fontSize:25,fontWeight: FontWeight.w600,color: Colors.black),),
+                 Text("Flutter Developer",style: textStyle(fontSize:23,fontWeight: FontWeight.w700,color: ColorWidget.colorBlack),),
               ],
             ),
           )
