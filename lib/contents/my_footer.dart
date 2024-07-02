@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import '../social_media_url/social_media_url.dart';
 import '../widget_folder/textstyle_widget.dart';
 
 class MyFooter extends StatefulWidget {
@@ -10,45 +10,16 @@ class MyFooter extends StatefulWidget {
 }
 
 class _MyFooterState extends State<MyFooter> {
-  ///___ InstagramProfile
-  final Uri _instagramProfile = Uri.parse('https://www.instagram.com/akshay_panika/');
-  final Uri _githubProfile = Uri.parse('https://github.com/Akshay-Panika');
-  final Uri _linkedInChat = Uri.parse('https://www.linkedin.com/in/akshay-panika/');
-  final Uri _emailUri = Uri.parse('workedids@gmail.com');
 
-
-  Future<void> _launchInstagramProfile() async {
-    if (!await launchUrl(_instagramProfile)) {
-      throw Exception('Could not launch $_instagramProfile');
-    }
-  }
-
-  ///___ GitHubProfile
-  Future<void> _launchGitHubProfile() async {
-    if (!await launchUrl(_githubProfile)) {
-      throw Exception('Could not launch $_githubProfile');
-    }
-  }
-
-  ///___ LinkedInChat
-  Future<void> _launchLinkedInChat() async {
-    if (!await launchUrl(_linkedInChat)) {
-      throw Exception('Could not launch $_linkedInChat');
-    }
-  }
-
-  ///___ Email
-  Future<void> _launchEmail() async {
-    if (!await launchUrl(_emailUri)) {
-      throw Exception('Could not launch $_emailUri');
-    }
-  }
+  final UrlHelper _urlHelper = UrlHelper();
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final paddingValue = screenWidth > 500 ? screenWidth * 0.03 - 5 : screenWidth * 0.03;
+
     return Container(
-      padding: EdgeInsets.only(left: screenWidth > 500 ? screenWidth*0.03-5 :screenWidth*0.03, bottom: 60),
+      padding: EdgeInsets.only(left: paddingValue, bottom: 60),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -58,34 +29,10 @@ class _MyFooterState extends State<MyFooter> {
           ),
           Row(
             children: [
-              TextButton(
-                onPressed: _launchInstagramProfile,
-                child: Text(
-                  "Instagram",
-                  style: textStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                ),
-              ),
-              TextButton(
-                onPressed: _launchLinkedInChat,
-                child: Text(
-                  "LinkedIn",
-                  style: textStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                ),
-              ),
-              TextButton(
-                onPressed: _launchGitHubProfile,
-                child: Text(
-                  "GitHub",
-                  style: textStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                ),
-              ),
-              TextButton(
-                onPressed: _launchEmail,
-                child: Text(
-                  "Email",
-                  style: textStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                ),
-              ),
+              _buildTextButton("Instagram", _urlHelper.instagramProfile),
+              _buildTextButton("LinkedIn", _urlHelper.linkedInChat),
+              _buildTextButton("GitHub", _urlHelper.githubProfile),
+              _buildTextButton("Email", _urlHelper.emailUri),
             ],
           ),
           Text(
@@ -93,6 +40,16 @@ class _MyFooterState extends State<MyFooter> {
             style: textStyle(fontSize: 13, fontWeight: FontWeight.w500),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildTextButton(String label, Uri url) {
+    return TextButton(
+      onPressed: () => _urlHelper.launchUrlHelper(url),
+      child: Text(
+        label,
+        style: textStyle(fontSize: 13, fontWeight: FontWeight.w500),
       ),
     );
   }

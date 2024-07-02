@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../widget_folder/color_widget.dart';
+import '../social_media_url/social_media_url.dart';
 import '../widget_folder/textstyle_widget.dart';
 
 class AppbarContainer extends StatefulWidget {
   final GlobalKey homeKey;
   final GlobalKey skillsKey;
   final Function({required bool open}) toggleProject;
-
 
   const AppbarContainer({
     required this.homeKey,
@@ -24,6 +24,7 @@ class _AppbarContainerState extends State<AppbarContainer> {
 
   bool isOpen = false;
   late List<Widget> navList;
+  final UrlHelper _urlHelper = UrlHelper();
 
   @override
   void initState() {
@@ -38,10 +39,7 @@ class _AppbarContainerState extends State<AppbarContainer> {
   }
 
   void scrollTo(GlobalKey key, {required bool open}) {
-    ///__- Toggle project view
     widget.toggleProject(open: open);
-
-    ///___ Scroll to the key if it has a valid context
     if (key.currentContext != null) {
       Scrollable.ensureVisible(
         key.currentContext!,
@@ -51,13 +49,6 @@ class _AppbarContainerState extends State<AppbarContainer> {
     }
   }
 
-  ///___ WhatsAppChat
-  final Uri _whatsappChat = Uri.parse('https://wa.me/+918989207770');
-  Future<void> whatsappChat() async {
-    if (!await launchUrl(_whatsappChat)) {
-      throw Exception('Could not launch $_whatsappChat');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +77,9 @@ class _AppbarContainerState extends State<AppbarContainer> {
 
             screenWidth > 500 ?  Row(children: navList,) : Container(),
 
-            screenWidth > 500 ? IconButton(onPressed: () => whatsappChat(), icon: const Icon(Icons.chat)) :
+            screenWidth > 500 ? IconButton(onPressed: (){
+              _urlHelper.launchUrlHelper(_urlHelper.whatsappUri);
+            }, icon: const FaIcon(FontAwesomeIcons.whatsapp)) :
             InkWell(child: Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(isOpen ?"Project": "Home",style: textStyle(fontSize: 13,fontWeight: FontWeight.w500),),

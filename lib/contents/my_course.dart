@@ -10,6 +10,7 @@ class MyCourse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return  Column(
       children: [
         20.height,
@@ -17,7 +18,10 @@ class MyCourse extends StatelessWidget {
         Expanded(
           child: Timeline.tileBuilder(
             //physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.only(left: 50.0, right: 50, top: 20),
+            padding:  EdgeInsets.only(
+                left: screenWidth > 500 ? 50 : 10,
+                right:  screenWidth > 500 ? 50 : 10,
+                top: 20),
             theme: TimelineThemeData(color: Colors.deepOrange.shade50),
             builder: TimelineTileBuilder.fromStyle(
               contentsAlign: ContentsAlign.alternating,

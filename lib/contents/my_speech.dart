@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:just_audio/just_audio.dart';
 
 class MySpeech extends StatefulWidget {
@@ -76,11 +77,7 @@ class _MySpeechState extends State<MySpeech> {
         backgroundColor: Colors.deepOrange.shade100,
         child: _isLoading
             ? const CircularProgressIndicator()
-            : Icon(
-          _isPlaying ? Icons.pause : Icons.play_arrow,
-          size: 30,
-          color: Colors.black,
-        ),
+            :FaIcon(_isPlaying ? FontAwesomeIcons.pause :FontAwesomeIcons.play, size: 20,)
       ),
     );
   }
