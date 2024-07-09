@@ -19,7 +19,7 @@ class _MyFooterState extends State<MyFooter> {
     final paddingValue = screenWidth > 500 ? screenWidth * 0.03 - 5 : screenWidth * 0.03;
 
     return Container(
-      padding: EdgeInsets.only(left: paddingValue, bottom: 60),
+      padding: EdgeInsets.only(left: paddingValue, bottom: 50),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -17,7 +17,6 @@ class MyCourse extends StatelessWidget {
         Text("My Courses",style: textStyle14(fontWeight: FontWeight.w600)),
         Expanded(
           child: Timeline.tileBuilder(
-            //physics: const NeverScrollableScrollPhysics(),
             padding:  EdgeInsets.only(
                 left: screenWidth > 500 ? 50 : 10,
                 right:  screenWidth > 500 ? 50 : 10,
