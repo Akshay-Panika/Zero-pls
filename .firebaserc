@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "zero-pls-cf676",
+    "zero-pls": "zero-pls-cf676"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
