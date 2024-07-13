@@ -11,7 +11,7 @@ import '../social_media_url/social_media_url.dart';
 import '../widget_folder/color_widget.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

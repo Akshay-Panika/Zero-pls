@@ -90,6 +90,7 @@ class _ProjectCardState extends State<ProjectCard> {
           child: Text(
             widget.headline.toString(),
             style: textStyle14(fontWeight: FontWeight.w500),
+            overflow: TextOverflow.ellipsis,
           ),
         ),
         Expanded(
@@ -101,60 +102,68 @@ class _ProjectCardState extends State<ProjectCard> {
               });
             },
             child: Container(
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
                   bottomRight: Radius.circular(10),
                 ),
                 image: DecorationImage(
-                    image: AssetImage(widget.imageUrl.toString()),fit: BoxFit.fill
+                  image: AssetImage(widget.imageUrl.toString()),
+                  fit: BoxFit.fill,
                 ),
                 color: ColorWidget.deepOrange100,
               ),
-              child: screenWidth > 500 ? isHover ? Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(""),
-                  Container(
-                    decoration:  BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
-                      ),
-                      color: ColorWidget.deepOrange100,
-                    ),
-                    padding: const EdgeInsets.only(bottom: 20.0,top: 20.0),
-                    child: Center(child: InkWell(
-                        onTap: () {
-                          _urlHelper.launchUrlHelper(_urlHelper.githubProfile);
-                        },
-                        child: Text("Source Code", style: textStyle16(fontWeight: FontWeight.w600, color: ColorWidget.colorBlack),))),
-                  ),
-                ],
-              ) :Container()
-                  :widget.isSelected ? Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(""),
-                  Container(
-                    decoration:  BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
-                      ),
-                      color: ColorWidget.deepOrange100,
-                    ),
-                    padding: const EdgeInsets.only(bottom: 20.0,top: 20.0),
-                    child: Center(child: InkWell(
-                        onTap: () {
-                          _urlHelper.launchUrlHelper(_urlHelper.githubProfile);
-                        },
-                        child: Text("Source Code", style: textStyle16(fontWeight: FontWeight.w600, color: ColorWidget.colorBlack),))),
-                  ),
-                ],
-              ) :Container(),
+              child: screenWidth > 500
+                  ? isHover
+                  ? _hoverActions()
+                  : Container()
+                  : widget.isSelected
+                  ? _hoverActions()
+                  : Container(),
             ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _hoverActions() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(""),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+            color: ColorWidget.deepOrange100,
+          ),
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              InkWell(
+                onTap: () {
+                  _urlHelper.launchUrlHelper(_urlHelper.calculatorApp);
+                },
+                child: Text(
+                  "View Project",
+                  style: textStyle14(fontWeight: FontWeight.w600, color: ColorWidget.colorBlack),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  _urlHelper.launchUrlHelper(_urlHelper.githubProfile);
+                },
+                child: Text(
+                  "Source Code",
+                  style: textStyle14(fontWeight: FontWeight.w600, color: ColorWidget.colorBlack),
+                ),
+              ),
+            ],
           ),
         ),
       ],

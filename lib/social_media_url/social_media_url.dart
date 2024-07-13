@@ -9,6 +9,12 @@ class UrlHelper {
   final Uri whatsappUri = Uri.parse('https://wa.me/+918989207770');
 
 
+
+  /// Flutter project
+  final Uri calculatorApp = Uri.parse('https://calculator-app-9dd82.web.app/');
+
+
+
   /// Function to launch URLs
   Future<void> launchUrlHelper(Uri url) async {
     if (!await launchUrl(url)) {

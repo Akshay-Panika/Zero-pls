@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../widget_folder/color_widget.dart';
 import '../widget_folder/textstyle_widget.dart';
 
