@@ -108,6 +108,28 @@ class _MySkillsState extends State<MySkills> {
                 });
               },
             ),
+
+            MyCard(
+              title: 'MS Word',
+              hoverText: '70%',
+              isSelected: selectedIndex == 8,
+              onTap: () {
+                setState(() {
+                  selectedIndex = 8;
+                });
+              },
+            ),
+
+            MyCard(
+              title: 'MS Excel',
+              hoverText: '70%',
+              isSelected: selectedIndex == 9,
+              onTap: () {
+                setState(() {
+                  selectedIndex = 9;
+                });
+              },
+            ),
           ],
         ),
       ],

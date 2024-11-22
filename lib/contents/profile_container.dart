@@ -19,7 +19,8 @@ class ProfileContainer extends StatelessWidget {
           CircleAvatar(
             radius: screenWidth > 500 ? screenWidth*0.09 : screenWidth*0.3,
             backgroundColor: Colors.deepOrange.shade100,
-            backgroundImage: const AssetImage('assets/images/logo.jpg'),),
+           // backgroundImage: const AssetImage('assets/images/logo.jpg'),),
+            backgroundImage: const AssetImage('assets/images/Ak-dp.jpg'),),
 
            Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),

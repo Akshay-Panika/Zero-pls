@@ -3,11 +3,11 @@
 List flutterProject = [
   {
     "headline":'Note App',
-    "image":'assets/images/Note_app.jpg',
+    "image":'assets/images/Notes app.jpg',
   },
   {
     "headline":'Calculator App',
-    "image":'assets/images/Calculator_app.jpg',
+    "image":'assets/images/Calculator app.jpg',
   },
   {
     "headline":'Dmart Clone App',
