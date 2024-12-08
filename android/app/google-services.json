@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "788261344515",
+    "project_id": "zeropls24",
+    "storage_bucket": "zeropls24.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788261344515:android:f8cd5447c74c343eef0536",
+        "android_client_info": {
+          "package_name": "com.example.zero_pls"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5Y7MswThLfc3UhZ7VRLtuiVAoJB4m2ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
