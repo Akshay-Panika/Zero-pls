@@ -40,6 +40,10 @@ class MySkills extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
                   onTap: (){},),
 
+                CardTextWidget(title: "Javascript",
+                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+                  onTap: (){},),
+
               ],
             ),
           ),
@@ -54,6 +58,10 @@ class MySkills extends StatelessWidget {
 
               children: [
                 CardTextWidget(title: "Flutter",
+                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+                  onTap: (){},),
+
+                CardTextWidget(title: "Node Js",
                   padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
                   onTap: (){},),
 
@@ -93,11 +101,7 @@ class MySkills extends StatelessWidget {
                   onTap: (){},),
 
 
-                CardTextWidget(title: "MS Word",
-                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-                  onTap: (){},),
-
-                CardTextWidget(title: "MS Excel",
+                CardTextWidget(title: "Blender",
                   padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
                   onTap: (){},),
 

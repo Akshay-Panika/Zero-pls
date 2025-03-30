@@ -11,6 +11,6 @@ class FontIcons extends StatelessWidget {
   Widget build(BuildContext context) {
     return  InkWell(
         onTap: onTap,
-        child:  FaIcon(icon, size: 20, color: Colors.black54,));
+        child:  FaIcon(icon, size: 20, color:Colors.black,));
   }
 }

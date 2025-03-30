@@ -71,7 +71,8 @@ class OpenCertificate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.deepOrange.shade50,
+      appBar: AppBar( backgroundColor: Colors.deepOrange.shade50,),
       body: Stack(
         children: [
           Center(child: Padding(
