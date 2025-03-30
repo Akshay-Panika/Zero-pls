@@ -65,8 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
 
-                screenWidth > 600 ?
-                20.height:0.height,
 
                  MySkills(key: skillsKey,),
 
