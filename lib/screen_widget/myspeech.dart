@@ -75,7 +75,9 @@ class _MySpeechState extends State<MySpeech> {
       onTap: toggleAudio,
       child: _isLoading
           ? const CircularProgressIndicator()
-          :FaIcon(_isPlaying ? FontAwesomeIcons.pause :FontAwesomeIcons.play, size: 20, color: Colors.black87,),
+          :CircleAvatar(
+        radius: 35,backgroundColor: Colors.deepOrange.shade100,
+          child: FaIcon(_isPlaying ? FontAwesomeIcons.pause :FontAwesomeIcons.play, size: 20, color: Colors.black87,)),
     );
   }
 }

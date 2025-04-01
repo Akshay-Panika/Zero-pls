@@ -7,11 +7,12 @@ class MyProjects extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return  Expanded(
       child: ListView(
         children: [
           Container(
-            height: 600,
+            height: screenHeight*0.8,
             //color: Colors.blue,
             width: double.infinity,
             margin: EdgeInsets.symmetric(horizontal: screenWidth > 500 ? 45 : 10, vertical: 15),
