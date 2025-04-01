@@ -51,29 +51,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
        openProject? MyProjects()
          :Expanded(
-            child: ListView(
-              children: [
-            
-                 Wrap(
-                  alignment: WrapAlignment.center,
-                  children: [
-            
-                    MyProfile(key: homeKey,),
-                    const MyData(),
-            
-            
-                  ],
+           child: ListView(
+             children: [
+
+                Padding(
+                  key: homeKey,
+                  padding: const EdgeInsets.only(left: 8, right: 8, top: 15),
+                  child:  Wrap(
+                    spacing: screenWidth*0.04,
+                    runSpacing: screenWidth*0.04,
+                    alignment: WrapAlignment.center,
+                   crossAxisAlignment: WrapCrossAlignment.center,
+                   children: [
+                     MyProfile(),
+                     MyData(),
+                   ],
+                  ),
                 ),
+           
+           
+                MySkills(key: skillsKey,),
 
-
-                 MySkills(key: skillsKey,),
-
-                screenWidth > 600 ?
-                0.height:20.height,
                 MyFooter(),
-              ],
-            ),
-          ),
+             ],
+           ),
+         ),
 
 
         ],

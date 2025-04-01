@@ -21,77 +21,74 @@ class _MyProfileState extends State<MyProfile> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return  Container(
-      height: 600,
-      width: screenWidth > 500 ? screenWidth*0.4 : screenWidth*1,
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal:screenWidth > 500? 45 :10, vertical: 15),
-        //margin: const EdgeInsets.symmetric(horizontal: 45, vertical: 15),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.deepOrange.shade100,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const SizedBox(height: 50,),
+      width: screenWidth > 600 ? screenWidth*0.3: double.infinity,
+      height: screenHeight*0.8,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(screenWidth*0.02),
+        color: Colors.deepOrange.shade100,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const SizedBox(height: 50,),
 
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+
+              /// My Image
+              const CircleAvatar(
+                radius: 140,
+                backgroundImage: AssetImage('assets/images/akshay.jpg'),
+              ),
+
+
+              10.height,
+              const TextPadding(
+                title: "Akshay Panika",
+                textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+              ),
+              const TextPadding(
+                title: "Flutter Developer",
+                textStyle: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+
+            ],
+          ),
+
+
+          /// Social media icon
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Row(
               children: [
-
-                /// My Image
-                const CircleAvatar(
-                  radius: 140,
-                  backgroundImage: AssetImage('assets/images/akshay.jpg'),
-                ),
+                FontIcons(
+                  icon: FontAwesomeIcons.instagram,
+                  onTap:() => _urlHelper.launchCustomUrl(_urlHelper.instagramProfile)),
+                10.width,
 
 
-                10.height,
-                const TextPadding(
-                  title: "Akshay Panika",
-                  textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-                ),
-                const TextPadding(
-                  title: "Flutter Developer",
-                  textStyle: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
+                FontIcons(
+                  icon: FontAwesomeIcons.linkedin,
+                    onTap:() => _urlHelper.launchCustomUrl(_urlHelper.linkedInChat)),
+                10.width,
 
+                FontIcons(
+                  icon: FontAwesomeIcons.github,
+                    onTap:() => _urlHelper.launchCustomUrl(_urlHelper.githubProfile)),
+                10.width,
+
+                FontIcons(
+                  icon: FontAwesomeIcons.youtube,
+                  onTap: () {},),
               ],
             ),
+          ),
 
-
-            /// Social media icon
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                children: [
-                  FontIcons(
-                    icon: FontAwesomeIcons.instagram,
-                    onTap:() => _urlHelper.launchCustomUrl(_urlHelper.instagramProfile)),
-                  10.width,
-
-
-                  FontIcons(
-                    icon: FontAwesomeIcons.linkedin,
-                      onTap:() => _urlHelper.launchCustomUrl(_urlHelper.linkedInChat)),
-                  10.width,
-
-                  FontIcons(
-                    icon: FontAwesomeIcons.github,
-                      onTap:() => _urlHelper.launchCustomUrl(_urlHelper.githubProfile)),
-                  10.width,
-
-                  FontIcons(
-                    icon: FontAwesomeIcons.youtube,
-                    onTap: () {},),
-                ],
-              ),
-            ),
-
-          ],
-        ),
+        ],
       ),
     );
   }
