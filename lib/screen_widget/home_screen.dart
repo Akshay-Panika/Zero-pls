@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
            
                 MySkills(key: skillsKey,),
 
-                40.height,
+                screenWidth>600?0.height: 40.height,
                 MyFooter(),
              ],
            ),
